@@ -97,7 +97,7 @@ def handle_video_link(message):
         return
     add_user_to_db(user)
     url_match = re.search(r'(https?://(?:[\w\-]+\.)?(?:tiktok\.com|instagram\.com|facebook\.com|fb\.watch)[^\s]+)', text)
-    video_url = url_match.group(1) if url_match else None
+    video_url = url_match.group(1).split('?')[0] if url_match else None
     if not video_url:
         bot.reply_to(message, "❗ لم أتعرف على رابط صالح. أرسل رابط مباشر لفيديو.")
         return
